@@ -11,13 +11,23 @@ io.on('connection', function (socket) {
 
     // Success!  Now listen to messages to be received
     socket.on('player:new', function (event) {
-        console.log('Received message from socket!', event);
+        console.log('player:new ', event);
         io.emit('player:new', event);
     });
 
     socket.on('player:update', function (event) {
-        console.log('Received message from socket!', event);
+        console.log('player:update ', event);
         io.emit('player:update', event);
+    });
+
+    socket.on('player:delete', function (event) {
+        console.log('player:delete ', event);
+        io.emit('player:delete', event);
+    });
+
+    socket.on('player:sync', function (event) {
+        console.log('player:sync ', event);
+        io.emit('player:sync', event);
     });
 
     socket.on('disconnect',function(){
